@@ -1,723 +1,118 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="contenox.com – Build AI agents, chat-driven UIs, and LLM-powered workflows grounded in your data."
-        />
-        <meta
-            property="og:title"
-            content="contenox.com – Build AI Agents & Chat-Driven UIs with Low Code"
-        />
-        <meta
-            property="og:description"
-            content="A modular platform for building context-aware agents, semantic search, and LLM-powered automation."
-        />
-        <meta property="og:url" content="https://contenox.com/" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="alternate" hreflang="en" href="https://contenox.com/" />
-        <link rel="alternate" hreflang="de" href="https://contenox.com/de" />
-        <script>
-            (function (c, l, a, r, i, t, y) {
-                c[a] =
-                    c[a] ||
-                    function () {
-                        (c[a].q = c[a].q || []).push(arguments);
-                    };
-                t = l.createElement(r);
-                t.async = 1;
-                t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
-                y = l.getElementsByTagName(r)[0];
-                y.parentNode.insertBefore(t, y);
-            })(window, document, "clarity", "script", "salla7fu15");
-        </script>
-        <title>contenox - Chat-Native Runtime for AI Agents</title>
-        <link rel="stylesheet" href="style-vars.css" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="icon" href="./logo.png" type="image/png" />
-        <link rel="canonical" href="https://contenox.com/" />
-    </head>
-    <body class="bg-background text-foreground font-body">
-        <header class="sticky top-0 z-50 bg-surface shadow-sm">
-            <div
-                class="container flex justify-between items-center py-4 px-6 md:px-10"
-            >
-                <a href="/" class="logo flex items-center space-x-2">
-                    <img
-                        src="./logo.png"
-                        alt="contenox Logo"
-                        class="logo-img w-8 h-8"
-                    />
-                    <span class="logo-text font-bold text-xl px-6"
-                        >contenox</span
-                    >
-                </a>
-                <div class="language-switcher flex items-center space-x-2">
-                    <span class="text-sm font-medium text-primary">EN</span>
-                    <span class="text-sm text-muted-foreground">|</span>
-                    <a
-                        href="/de.html"
-                        class="text-sm font-medium hover:text-primary"
-                        hreflang="de"
-                        >DE</a
-                    >
-                </div>
-            </div>
-        </header>
-
-        <main>
-            <section
-                class="bg-primary-50 text-primary-800 py-24 px-6 text-center"
-            >
-                <div class="container mx-auto max-w-3xl rounded-lg">
-                    <h1
-                        class="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-                    >
-                        contenox – Build AI Agents & Chat-Driven UIs with Low
-                        Code
-                    </h1>
-                    <p class="text-lg mb-8 max-w-xl mx-auto">
-                        A modular platform for building context-aware agents,
-                        semantic search, and LLM-powered automation — all
-                        powered by conversational interfaces and a powerfull
-                        DSL.
-                    </p>
-                </div>
-            </section>
-            <div id="features" class="py-20 px-6 bg-surface">
-                <div class="container mx-auto">
-                    <h2 class="text-2xl font-semibold mb-10 text-center">
-                        Core Capabilities
-                    </h2>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                💬 Conversational UI Engine
-                            </h3>
-                            <p>
-                                Replace buttons, menus, and wizards with natural
-                                language interactions driven by chat and model
-                                suggested commands.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                ✨ Unlimited AI Agent Capabilities
-                            </h3>
-                            <p>
-                                Let your AI agents take action and connect with
-                                anything. Imagine an agent that can research the
-                                latest news and interpret its impact on the
-                                stock market, generate personalized content, or
-                                even manage physical devices. Our system allows
-                                for seamless integration with virtually any
-                                service or function your business needs.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🚀 Scalable Runtime Architecture
-                            </h3>
-                            <p>
-                                contenox isn’t just a frontend — it’s a scalable
-                                backend for AI agents that questions all
-                                existing frameworks and builds pieces from the
-                                foundation where needed.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                ⚙️ Configurable Agent Logic
-                                <span class="text-sm italic">(Soon)</span>
-                            </h3>
-                            <p>
-                                Build workflows in YAML — no backend code. Mix
-                                LLM prompts, hooks, and logic in a single flow.
-                                Change behavior without redeploying.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔍 Semantic Search & RAG
-                            </h3>
-                            <p>
-                                Query documents using natural language.
-                                Embeddings + vector search power semantic
-                                understanding and retrieval-augmented
-                                generation.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🎨 Visual Behavior Builder
-                                <span class="text-sm italic">(Soon)</span>
-                            </h3>
-                            <p>
-                                Drag-and-drop your YAML chains, hooks, and
-                                transitions — no YAML hand-editing required.
-                                Build and preview your agent flows in a visual
-                                UI.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔄 LLM Orchestration & Fallbacks
-                            </h3>
-                            <p>
-                                Our Model Resolver routes requests to the
-                                optimal backend while the Model Provider
-                                executes LLM calls via Ollama and vLLM.
-                                Perfectly suited for air gapped Zero Trust
-                                deployments.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                📊 Tracing, Metrics and Observability
-                            </h3>
-                            <p>
-                                contenox is built for full system transparency
-                                at its core.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                ☁️ Self-Hostable & Cloud-Native
-                            </h3>
-                            <p>
-                                Designed for full control over your data and
-                                deployment. Containerized and built with
-                                Kubernetes in mind for seamless integration into
-                                cloud-native environments.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-6 mt-8">
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🇪🇺 GDPR & AI Act Ready
-                            </h3>
-                            <p>
-                                Designed with GDPR, AI Act, and enterprise
-                                compliance standards in mind. Our architecture
-                                ensures full transparency and control over data
-                                flows.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔒 LLM driven moderation
-                            </h3>
-                            <p>
-                                User input can be analyzed before reaching
-                                models via tasks, and output can also be checked
-                                before reaching users.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <section id="founders-note" class="py-20 px-6 surface">
-                <div class="container mx-auto max-w-3xl text-center">
-                    <h2 class="text-2xl font-semibold mb-8">
-                        Why I Built contenox
-                    </h2>
-                    <p class="text-muted-foreground mb-6 leading-relaxed">
-                        When I started experimenting with chat-based automation,
-                        I assumed there would already be a framework or platform
-                        that let me define intelligent agents, control workflows
-                        through natural language, and plug into my systems
-                        without reinventing the wheel or handing over my data.
-                    </p>
-                    <p class="text-muted-foreground mb-6 leading-relaxed">
-                        But I quickly realized: existing tools were either too
-                        experimental, too limited, or locked into proprietary
-                        ecosystems. None gave me full control over deployment,
-                        data flow, or agent behavior without writing tons of
-                        glue code. So I did what I do best — build a product for
-                        enterprise-ready technology infrastructure.
-                    </p>
-                    <p class="text-muted-foreground mb-6 leading-relaxed">
-                        So I built <strong>contenox</strong> — not just to
-                        scratch my own itch, but to create a flexible,
-                        self-hostable runtime that lets me sleep at night when
-                        deployed publicly, and where chat isn’t just a
-                        conversation — it’s the way to replace the need to log
-                        into dozens of UIs and hunt through nested dropdowns.
-                    </p>
-                    <p class="text-muted-foreground italic">
-                        If you’ve ever wanted to build a system where your team
-                        can truly control your environment through conversation,
-                        contenox is for you.
-                    </p>
-                    <div class="mt-8">
-                        <p class="font-medium">— Alexander Ertli, Founder</p>
-                    </div>
-                </div>
-            </section>
-            <section id="why-contenox" class="py-20 px-6 surface">
-                <div class="container mx-auto">
-                    <h2 class="text-2xl font-semibold mb-10 text-center">
-                        Why contenox?
-                    </h2>
-                    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                ⛓️ Modular Agent Behavior
-                            </h3>
-                            <p>
-                                Define agent behavior through flexible
-                                configurations—easily add new features without
-                                code changes. Combine AI prompts, decision
-                                rules, and custom actions into a single,
-                                intuitive structure.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔌 Intelligent Hook System
-                            </h3>
-                            <p>
-                                Empower your AI agents to perform real-world
-                                tasks and integrate with any system. contenox
-                                allows your agent to suggest and execute
-                                commands – from generating articles, to
-                                analyzing market data, to controlling drones, or
-                                even sending an email.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔌 Connect MCP-Servers as Hooks
-                                <span class="text-sm italic">(Soon)</span>
-                            </h3>
-                            <p>
-                                allow any compatible LLM servers to extend
-                                contenox capabilities via the Model Context
-                                Protocol.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🧠 Context-Aware Chat Sessions
-                            </h3>
-                            <p>
-                                Maintain multi-turn conversations with full
-                                memory of past interactions. Supports LLMs,
-                                document grounding, and role-based message
-                                history.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50 md:col-span-2"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🌐 Omni-Channel Chat APIs
-                                <span class="text-sm italic">(Soon)</span>
-                            </h3>
-                            <p>
-                                Deploy agents to Slack, Discord, or any
-                                React-based chat UI. Integrate your
-                                conversational workflows wherever your users
-                                are.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50 md:col-span-2"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🚀 Chat-First Runtime Architecture
-                            </h3>
-                            <p>
-                                contenox is more than just an interface—it's a
-                                scalable distributed system with a
-                                high-performance engine for AI actions, task
-                                management, and consistent state handling.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔒 User & Access Control
-                            </h3>
-                            <p>
-                                Robust multi-user support with granular
-                                permissions, managed by a custom access control
-                                system for secure, enterprise-grade deployments.
-                            </p>
-                        </div>
-
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🚀 Scalable Microservice Architecture
-                            </h3>
-                            <p>
-                                Built with independent Go and Python services,
-                                enabling parallel development, flexible scaling,
-                                and resilient deployments for complex AI
-                                workflows.
-                            </p>
-                        </div>
-
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🚦 Intelligent LLM Routing & Management
-                            </h3>
-                            <p>
-                                Our LLM Resolver dynamically selects the optimal
-                                model backend using scoring and routing
-                                policies, ensuring efficient and performant AI
-                                interactions.
-                            </p>
-                        </div>
-
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                ⚡ Asynchronous Job Processing
-                            </h3>
-                            <p>
-                                Dedicated Python workers handle background tasks
-                                like document parsing, and chunking, ensuring
-                                smooth, scalable data ingestion.
-                            </p>
-                        </div>
-
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🌐 Comprehensive Data Persistence
-                            </h3>
-                            <p>
-                                Leverages PostgreSQL for core data, Vald for
-                                high-performance vector search, and Valkey for
-                                distributed caching, ensuring robust and
-                                scalable storage.
-                            </p>
-                        </div>
-
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🛡️ Secure Backend-for-Frontend (BFF)
-                            </h3>
-                            <p>
-                                Our BFF pattern securely manages API requests
-                                and authentication, protecting the UI from
-                                direct exposure and enhancing overall system
-                                security.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🧪 Comprehensive Testing & QA
-                            </h3>
-                            <p>
-                                contenox is covered end-to-end with unit tests
-                                and behavior-driven integration tests across all
-                                layers and features, ensuring stability as the
-                                platform evolves.
-                            </p>
-                        </div>
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔍 DSL Inspector
-                            </h3>
-                            <p>
-                                All inputs and output of each state change and
-                                routing decision done via the contenox DSL are
-                                fully recorded via the DSL Inspector into a
-                                comprehensive Stacktrace.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="examples" class="py-20 px-6 bg-surface">
-                <div class="container mx-auto">
-                    <h2 class="text-2xl font-semibold mb-6 text-center">
-                        Build Production-Ready Agents in Minutes
-                    </h2>
-                    <p
-                        class="text-center max-w-3xl mx-auto text-muted-foreground mb-8"
-                    >
-                        Define complex AI behaviors with declarative YAML
-                        configurations. No boilerplate - just ship working
-                        agents.
-                    </p>
-
-                    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <!-- Example 1: Complete Chat with Moderation -->
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🔒 Complete Chat with Moderation
-                            </h3>
-                            <p class="text-sm text-muted-foreground mb-3">
-                                Full chat flow with input validation, command
-                                routing, and error handling
-                            </p>
-                            <pre
-                                class="text-sm font-mono text-muted-foreground whitespace-pre-wrap overflow-x-auto"
-                            >
-    <code>- id: append_user_message
-  description: Append user message to chat history
-  type: hook
-  hook:
-    type: append_user_message
-    args:
-      subject_id: "{{ .subject_id }}"
-  transition:
-    branches:
-      - operator: default
-        goto: mux_input
-
-- id: mux_input
-  description: Check for commands like /echo using Mux
-  type: hook
-  hook:
-    type: command_router
-    args:
-      subject_id: "{{ .subject_id }}"
-  transition:
-    branches:
-      - operator: equals
-        when: "echo"
-        goto: persist_messages
-      - operator: default
-        goto: moderate
-
-- id: moderate
-  description: Moderate the input
-  type: parse_number
-  prompt_template: "Classify input safety (0=safe, 10=spam): {{.input}}"
-  input_var: input
-  transition:
-    branches:
-      - operator: "&gt;"
-        when: "4"
-        goto: reject_request
-      - operator: default
-        goto: execute_chat_model
-
-- id: reject_request
-  description: Reject the request
-  type: raw_string
-  prompt_template: "Response: Input rejected for safety reasons"
-  transition:
-    branches:
-      - operator: default
-        goto: end
-
-- id: execute_chat_model
-  description: Run inference using selected LLM
-  type: model_execution
-  system_instruction: "You're a helpful assistant..."
-  execute_config:
-    models:
-      - gemini-2.5-flash
-      - llama3
-    providers:
-      - gemini
-  input_var: input
-  transition:
-    branches:
-      - operator: default
-        goto: persist_messages
-
-- id: persist_messages
-  description: Persist the conversation
-  type: hook
-  hook:
-    type: persist_messages
-    args:
-      subject_id: "{{ .subject_id }}"
-  transition:
-    branches:
-      - operator: default
-        goto: end</code></pre>
-                        </div>
-
-                        <!-- Example 4: OpenAI-Compatible API -->
-                        <div
-                            class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50"
-                        >
-                            <h3 class="font-bold text-lg mb-2">
-                                🤝 OpenAI-Compatible API
-                            </h3>
-                            <p class="text-sm text-muted-foreground mb-3">
-                                Drop-in replacement for OpenAI API endpoints
-                            </p>
-                            <pre
-                                class="text-sm font-mono text-muted-foreground whitespace-pre-wrap overflow-x-auto"
-                            >
-    <code>- id: convert_request
-  description: Convert OpenAI request to internal format
-  type: hook
-  hook:
-    type: openai_to_internal
-  transition:
-    branches:
-      - operator: default
-        goto: execute_model
-
-- id: execute_model
-  description: Run inference using selected LLM
-  type: model_execution
-  execute_config:
-    models:
-      - "{{ .model }}"
-    providers:
-      - openai
-      - vllm
-  transition:
-    branches:
-      - operator: default
-        goto: convert_response
-
-- id: convert_response
-  description: Convert internal result to OpenAI format
-  type: hook
-  hook:
-    type: internal_to_openai
-    args:
-      model: "{{ .model }}"
-  transition:
-    branches:
-      - operator: default
-        goto: end
-
-    # Python usage:
-    # from openai import OpenAI
-    # client = OpenAI(base_url="https://tenant_id.contenox.com/v1/chat/completions")
-    # response = client.chat.completions.create(
-    #   model="gemini-2.5-flash",
-    #   messages=[{"role": "user", "content": "Hello!"}]
-    # )</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section
-                id="contact"
-                class="py-20 px-6 bg-primary-50 text-primary-800"
-            >
-                <div class="container mx-auto text-center">
-                    <h2 class="text-2xl font-semibold mb-6">Get in Touch</h2>
-                    <p class="mb-6">
-                        contenox is currently in active development.<br />Want
-                        to learn more or collaborate?
-                    </p>
-                    <a
-                        href="https://www.linkedin.com/company/contenox/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-primary inline-block px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-                    >
-                        Contact Us
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <footer
-            class="bg-surface border-t border-secondary-200 py-8 px-6 text-center"
+<main>
+  <section class="py-20 px-6 text-center">
+    <div class="container mx-auto max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">contenox</h1>
+      <p class="text-xl mb-2">
+        Your sovereign, open-source runtime for reliable AI workflows.
+      </p>
+      <p class="text-muted-foreground mb-8">
+        Orchestrate LLMs, external tools, and business logic as deterministic
+        state machines—fully self-hosted, extensible, and vendor-agnostic.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a
+          href="https://github.com/contenox/runtime"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary inline-block px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow"
         >
-            <div class="container mx-auto">
-                <p>&copy; 2025 Alexander Ertli. All rights reserved.</p>
-                <div class="social-links mt-4">
-                    <a
-                        href="https://github.com/contenox/contenox"
-                        target="_blank"
-                        class="text-secondary-500 hover:text-primary transition-colors"
-                    >
-                        GitHub
-                    </a>
-                    <a
-                        href="mailto:hello@contenox.com"
-                        target="_blank"
-                        class="text-secondary-500 hover:text-primary transition-colors ml-8"
-                    >
-                        Contact
-                    </a>
-                </div>
-            </div>
-            <div
-                class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50 md:col-span-2"
-            >
-                <h3 class="text-lg font-semibold mb-4">Legal Information</h3>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-medium mb-2">According to § 5 TMG</h4>
-                        <address class="not-italic">
-                            <div>Alexander Ertli</div>
-                            <div>21073 Hamburg</div>
-                            <div>Germany</div>
-                        </address>
-                    </div>
-                    <div>
-                        <h4 class="font-medium mb-2 mt-2">Contact</h4>
-                        <div>
-                            Email:
-                            <a
-                                href="mailto:hello@contenox.com"
-                                class="text-primary hover:underline"
-                                >hello@contenox.com</a
-                            >
-                        </div>
-                        <p class="mt-2">VAT ID: DE429161583-00001</p>
-                        <p>Tax Number: 2247005603265</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </body>
-</html>
+          GitHub Repo
+        </a>
+        <a
+          href="#hooks"
+          class="btn-outline inline-block px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+        >
+          How It Works
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="hooks" class="py-16 px-6 bg-surface">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-2xl font-semibold mb-6 text-center">
+        AI Workflows as State Machines
+      </h2>
+      <p class="text-muted-foreground mb-8 text-center">
+        contenox executes AI workflows as explicit, observable state machines.
+        Every step—LLM call, data fetch, or external action—is a state with
+        defined inputs, outputs, and transitions.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6 rounded-lg bg-surface-50">
+          <h3 class="font-bold text-lg mb-2">🔌 Hooks: Connect to Anything</h3>
+          <p>
+            Extend your agents with <strong>hooks</strong>—remote services that
+            integrate external APIs, databases, or tools. Register any
+            OpenAPI-compatible endpoint, and contenox auto-generates callable
+            LLM tools.
+          </p>
+        </div>
+        <div class="card p-6 rounded-lg bg-surface-50">
+          <h3 class="font-bold text-lg mb-2">⚙️ Declarative & Observable</h3>
+          <p>
+            Define workflows in YAML or via API. Every transition, model call,
+            and hook execution is logged, traced, and replayable—no black-box
+            agents.
+          </p>
+        </div>
+        <div class="card p-6 rounded-lg bg-surface-50">
+          <h3 class="font-bold text-lg mb-2">☁️ Self-Hosted & Portable</h3>
+          <p>
+            Run anywhere: on-prem, air-gapped, or cloud. Built with Go,
+            containerized, and designed for Kubernetes. Full data sovereignty.
+          </p>
+        </div>
+        <div class="card p-6 rounded-lg bg-surface-50">
+          <h3 class="font-bold text-lg mb-2">🔄 Multi-Model Orchestration</h3>
+          <p>
+            Route requests dynamically across Ollama, vLLM, OpenAI, or custom
+            backends. Define fallbacks, affinity groups, and resolution policies
+            per task.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="container mx-auto max-w-3xl text-center">
+      <h2 class="text-2xl font-semibold mb-6">
+        100% Open Source. No Paywalls.
+      </h2>
+      <p class="text-muted-foreground mb-8">
+        After years of internal use, we’re open-sourcing everything—runtime,
+        hooks, observability, and tooling—under Apache 2.0.
+      </p>
+      <p class="text-muted-foreground mb-8">
+        If you’re tired of proprietary “AI platforms” that hide critical logic
+        behind APIs, contenox gives you full control.
+      </p>
+      <a
+        href="https://github.com/contenox/runtime"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary inline-block px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+      >
+        Star the Repo & Get Started
+      </a>
+    </div>
+  </section>
+
+  <section id="get-started" class="py-16 px-6 bg-primary-50 text-primary-800">
+    <div class="container mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-semibold mb-6">Try It in 2 Minutes</h2>
+      <pre
+        class="text-sm bg-white p-4 rounded-lg overflow-x-auto text-left mb-6"
+      ><code>git clone https://github.com/contenox/runtime.git
+cd runtime
+docker compose up -d
+./scripts/bootstrap.sh nomic-embed-text:latest phi3:3.8b phi3:3.8b</code></pre>
+      <p>
+        Runs a full AI stack: LLMs, vector DB, tokenizer, and orchestration
+        engine.
+      </p>
+    </div>
+  </section>
+</main>
