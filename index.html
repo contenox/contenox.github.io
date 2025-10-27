@@ -1,118 +1,229 @@
-<main>
-  <section class="py-20 px-6 text-center">
-    <div class="container mx-auto max-w-3xl">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">contenox</h1>
-      <p class="text-xl mb-2">
-        Your sovereign, open-source runtime for reliable AI workflows.
-      </p>
-      <p class="text-muted-foreground mb-8">
-        Orchestrate LLMs, external tools, and business logic as deterministic
-        state machines—fully self-hosted, extensible, and vendor-agnostic.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a
-          href="https://github.com/contenox/runtime"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary inline-block px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-        >
-          GitHub Repo
-        </a>
-        <a
-          href="#hooks"
-          class="btn-outline inline-block px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-colors"
-        >
-          How It Works
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="hooks" class="py-16 px-6 bg-surface">
-    <div class="container mx-auto max-w-4xl">
-      <h2 class="text-2xl font-semibold mb-6 text-center">
-        AI Workflows as State Machines
-      </h2>
-      <p class="text-muted-foreground mb-8 text-center">
-        contenox executes AI workflows as explicit, observable state machines.
-        Every step—LLM call, data fetch, or external action—is a state with
-        defined inputs, outputs, and transitions.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="card p-6 rounded-lg bg-surface-50">
-          <h3 class="font-bold text-lg mb-2">🔌 Hooks: Connect to Anything</h3>
-          <p>
-            Extend your agents with <strong>hooks</strong>—remote services that
-            integrate external APIs, databases, or tools. Register any
-            OpenAPI-compatible endpoint, and contenox auto-generates callable
-            LLM tools.
-          </p>
-        </div>
-        <div class="card p-6 rounded-lg bg-surface-50">
-          <h3 class="font-bold text-lg mb-2">⚙️ Declarative & Observable</h3>
-          <p>
-            Define workflows in YAML or via API. Every transition, model call,
-            and hook execution is logged, traced, and replayable—no black-box
-            agents.
-          </p>
-        </div>
-        <div class="card p-6 rounded-lg bg-surface-50">
-          <h3 class="font-bold text-lg mb-2">☁️ Self-Hosted & Portable</h3>
-          <p>
-            Run anywhere: on-prem, air-gapped, or cloud. Built with Go,
-            containerized, and designed for Kubernetes. Full data sovereignty.
-          </p>
-        </div>
-        <div class="card p-6 rounded-lg bg-surface-50">
-          <h3 class="font-bold text-lg mb-2">🔄 Multi-Model Orchestration</h3>
-          <p>
-            Route requests dynamically across Ollama, vLLM, OpenAI, or custom
-            backends. Define fallbacks, affinity groups, and resolution policies
-            per task.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 px-6">
-    <div class="container mx-auto max-w-3xl text-center">
-      <h2 class="text-2xl font-semibold mb-6">
-        100% Open Source. No Paywalls.
-      </h2>
-      <p class="text-muted-foreground mb-8">
-        After extensive of internal use, we’re open-sourcing everything—runtime,
-        hooks, observability, and tooling—under Apache 2.0.
-      </p>
-      <p class="text-muted-foreground mb-8">
-        If you’re tired of proprietary “AI platforms” that hide critical logic
-        behind APIs, contenox gives you full control.
-      </p>
-      <a
-        href="https://github.com/contenox/runtime"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-primary inline-block px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="contenox.com – Build AI agents, chat-driven UIs, and LLM-powered workflows grounded in your data."
+    />
+    <meta
+      property="og:title"
+      content="contenox.com – Build AI Agents & Chat-Driven UIs with Low Code"
+    />
+    <meta
+      property="og:description"
+      content="A modular platform for building context-aware agents, semantic search, and LLM-powered automation."
+    />
+    <meta property="og:url" content="https://contenox.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" hreflang="en" href="https://contenox.com/" />
+    <link rel="alternate" hreflang="de" href="https://contenox.com/de" />
+    <title>contenox - Chat-Native Runtime for AI Agents</title>
+    <link rel="stylesheet" href="style-vars.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./logo.png" type="image/png" />
+    <link rel="canonical" href="https://contenox.com/" />
+  </head>
+  <body class="bg-background text-foreground font-body">
+    <header class="sticky top-0 z-50 bg-surface shadow-sm">
+      <div
+        class="container flex justify-between items-center py-4 px-6 md:px-10"
       >
-        Star the Repo & Get Started
-      </a>
-    </div>
-  </section>
+        <a href="/" class="logo flex items-center space-x-2">
+          <img src="./logo.png" alt="contenox Logo" class="logo-img w-8 h-8" />
+          <span class="logo-text font-bold text-xl px-6">contenox</span>
+        </a>
+        <div class="language-switcher flex items-center space-x-2">
+          <span class="text-sm font-medium text-primary">EN</span>
+          <span class="text-sm text-muted-foreground">|</span>
+          <a
+            href="/de.html"
+            class="text-sm font-medium hover:text-primary"
+            hreflang="de"
+            >DE</a
+          >
+        </div>
+      </div>
+    </header>
 
-  <section id="get-started" class="py-16 px-6 bg-primary-50 text-primary-800">
-    <div class="container mx-auto max-w-2xl text-center">
-      <h2 class="text-2xl font-semibold mb-6">Try It in 2 Minutes</h2>
-      <pre
-        class="text-sm bg-white p-4 rounded-lg overflow-x-auto text-left mb-6"
-      ><code>git clone https://github.com/contenox/runtime.git
-cd runtime
-docker compose up -d
-./scripts/bootstrap.sh nomic-embed-text:latest phi3:3.8b phi3:3.8b</code></pre>
-      <p>
-        Runs a full AI stack: LLMs, vector DB, tokenizer, and orchestration
-        engine.
-      </p>
-    </div>
-  </section>
-</main>
+    <main>
+      <section class="py-20 px-6 text-center">
+        <div class="container mx-auto max-w-3xl">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">contenox</h1>
+          <p class="text-xl mb-2">
+            Your sovereign, open-source runtime for reliable AI workflows.
+          </p>
+          <p class="text-muted-foreground mb-8">
+            Orchestrate LLMs, external tools, and business logic as
+            deterministic state machines—fully self-hosted, extensible, and
+            vendor-agnostic.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="https://github.com/contenox/runtime"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary inline-block px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            >
+              GitHub Repo
+            </a>
+            <a
+              href="#hooks"
+              class="btn-outline inline-block px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+            >
+              How It Works
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="hooks" class="py-16 px-6 bg-surface">
+        <div class="container mx-auto max-w-4xl">
+          <h2 class="text-2xl font-semibold mb-6 text-center">
+            AI Workflows as State Machines
+          </h2>
+          <p class="text-muted-foreground mb-8 text-center">
+            contenox executes AI workflows as explicit, observable state
+            machines. Every step—LLM call, data fetch, or external action—is a
+            state with defined inputs, outputs, and transitions.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-6 rounded-lg bg-surface-50">
+              <h3 class="font-bold text-lg mb-2">
+                🔌 Hooks: Connect to Anything
+              </h3>
+              <p>
+                Extend your agents with <strong>hooks</strong>—remote services
+                that integrate external APIs, databases, or tools. Register any
+                OpenAPI-compatible endpoint, and contenox auto-generates
+                callable LLM tools.
+              </p>
+            </div>
+            <div class="card p-6 rounded-lg bg-surface-50">
+              <h3 class="font-bold text-lg mb-2">
+                ⚙️ Declarative & Observable
+              </h3>
+              <p>
+                Define workflows in YAML or via API. Every transition, model
+                call, and hook execution is logged, traced, and replayable—no
+                black-box agents.
+              </p>
+            </div>
+            <div class="card p-6 rounded-lg bg-surface-50">
+              <h3 class="font-bold text-lg mb-2">☁️ Self-Hosted & Portable</h3>
+              <p>
+                Run anywhere: on-prem, air-gapped, or cloud. Built with Go,
+                containerized, and designed for Kubernetes. Full data
+                sovereignty.
+              </p>
+            </div>
+            <div class="card p-6 rounded-lg bg-surface-50">
+              <h3 class="font-bold text-lg mb-2">
+                🔄 Multi-Model Orchestration
+              </h3>
+              <p>
+                Route requests dynamically across Ollama, vLLM, OpenAI, or
+                custom backends. Define fallbacks, affinity groups, and
+                resolution policies per task.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 px-6">
+        <div class="container mx-auto max-w-3xl text-center">
+          <h2 class="text-2xl font-semibold mb-6">
+            100% Open Source. No Paywalls.
+          </h2>
+          <p class="text-muted-foreground mb-8">
+            After extensive of internal use, we’re open-sourcing
+            everything—runtime, hooks, observability, and tooling—under Apache
+            2.0.
+          </p>
+          <p class="text-muted-foreground mb-8">
+            If you’re tired of proprietary “AI platforms” that hide critical
+            logic behind APIs, contenox gives you full control.
+          </p>
+          <a
+            href="https://github.com/contenox/runtime"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary inline-block px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            Star the Repo & Get Started
+          </a>
+        </div>
+      </section>
+
+      <section
+        id="get-started"
+        class="py-16 px-6 bg-primary-50 text-primary-800"
+      >
+        <div class="container mx-auto max-w-2xl text-center">
+          <h2 class="text-2xl font-semibold mb-6">Try It in 2 Minutes</h2>
+          <pre
+            class="text-sm bg-white p-4 rounded-lg overflow-x-auto text-left mb-6"
+          ><code>git clone https://github.com/contenox/runtime.git
+    cd runtime
+    docker compose up -d
+    ./scripts/bootstrap.sh nomic-embed-text:latest phi3:3.8b phi3:3.8b</code></pre>
+          <p>
+            Runs a full AI stack: LLMs, vector DB, tokenizer, and orchestration
+            engine.
+          </p>
+        </div>
+      </section>
+    </main>
+      <div class="container mx-auto">
+        <p>&copy; 2025 contenox contributors. Open source forever.</p>
+        <div class="social-links mt-4">
+          <a
+            href="https://github.com/contenox/contenox"
+            target="_blank"
+            class="text-secondary-500 hover:text-primary transition-colors"
+          >
+            GitHub
+          </a>
+          <a
+            href="mailto:hello@contenox.com"
+            target="_blank"
+            class="text-secondary-500 hover:text-primary transition-colors ml-8"
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+      <div
+        class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50 md:col-span-2"
+      >
+        <h3 class="text-lg font-semibold mb-4">Legal Information</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="font-medium mb-2">According to § 5 TMG</h4>
+            <address class="not-italic">
+              <div>Alexander Ertli</div>
+              <div>21073 Hamburg</div>
+              <div>Germany</div>
+            </address>
+          </div>
+          <div>
+            <h4 class="font-medium mb-2 mt-2">Contact</h4>
+            <div>
+              Email:
+              <a
+                href="mailto:hello@contenox.com"
+                class="text-primary hover:underline"
+                >hello@contenox.com</a
+              >
+            </div>
+            <p class="mt-2">VAT ID: DE429161583-00001</p>
+            <p>Tax Number: 2247005603265</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

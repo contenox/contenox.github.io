@@ -5,34 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="contenox – Ihre souveräne, Open-Source-Runtime für zuverlässige KI-Workflows."
+      content="contenox – Erstellen Sie KI-Agenten, Chat-gesteuerte UIs und LLM-basierte Workflows mit Ihren Daten."
     />
     <meta
       property="og:title"
-      content="contenox – Open-Source-Runtime für Enterprise-KI"
+      content="contenox – KI-Agenten & Chat-gesteuerte UIs mit Low Code erstellen"
     />
     <meta
       property="og:description"
-      content="Bauen und betreiben Sie vertrauenswürdige KI-Agenten mit voller Kontrolle – keine Black Boxes, kein Vendor-Lock-in."
+      content="Eine modulare Plattform zum Erstellen von kontextbewussten Agenten, Semantic Search und LLM-basierter Automatisierung."
     />
-    <meta property="og:url" content="https://contenox.com/de" />
+    <meta property="og:url" content="https://contenox.com/" />
     <link rel="alternate" hreflang="en" href="https://contenox.com/" />
     <link rel="alternate" hreflang="de" href="https://contenox.com/de" />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>contenox – Souveräne Open-Source-KI-Runtime</title>
+    <script>
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "salla7fu15");
+    </script>
+    <title>contenox - Chat-native Runtime für KI-Agenten</title>
     <link rel="stylesheet" href="style-vars.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="./logo.png" type="image/png" />
-    <link rel="canonical" href="https://contenox.com/de" />
+    <link rel="canonical" href="https://contenox.com/" />
   </head>
+
   <body class="bg-background text-foreground font-body">
     <header class="sticky top-0 z-50 bg-surface shadow-sm">
       <div
         class="container flex justify-between items-center py-4 px-6 md:px-10"
       >
-        <a href="/de" class="logo flex items-center space-x-2">
+        <a href="/de.html" class="logo flex items-center space-x-2">
           <img src="./logo.png" alt="contenox Logo" class="logo-img w-8 h-8" />
-          <span class="logo-text font-bold text-xl">contenox</span>
+          <span class="logo-text font-bold text-xl px-6">contenox</span>
         </a>
         <div class="language-switcher flex items-center space-x-2">
           <a
@@ -170,9 +185,9 @@
           <pre
             class="text-sm bg-white p-4 rounded-lg overflow-x-auto text-left mb-6"
           ><code>git clone https://github.com/contenox/runtime.git
-cd runtime
-docker compose up -d
-./scripts/bootstrap.sh nomic-embed-text:latest phi3:3.8b phi3:3.8b</code></pre>
+    cd runtime
+    docker compose up -d
+    ./scripts/bootstrap.sh nomic-embed-text:latest phi3:3.8b phi3:3.8b</code></pre>
           <p>
             Startet einen vollständigen KI-Stack: LLMs, Vektor-Datenbank,
             Tokenizer und Orchestrierungs-Engine.
@@ -181,12 +196,14 @@ docker compose up -d
       </section>
     </main>
 
-    <footer class="bg-surface border-t py-8 px-6 text-center">
+    <footer
+      class="bg-surface border-t border-secondary-200 py-8 px-6 text-center"
+    >
       <div class="container mx-auto">
-        <p>&copy; 2025 contenox-Mitwirkende. Open Source für immer.</p>
+        <p>&copy; 2025 contenox contributors. Open source forever.</p>
         <div class="social-links mt-4">
           <a
-            href="https://github.com/contenox/runtime"
+            href="https://github.com/contenox/contenox"
             target="_blank"
             class="text-secondary-500 hover:text-primary transition-colors"
           >
@@ -194,10 +211,42 @@ docker compose up -d
           </a>
           <a
             href="mailto:hello@contenox.com"
-            class="text-secondary-500 hover:text-primary transition-colors ml-6"
+            target="_blank"
+            class="text-secondary-500 hover:text-primary transition-colors ml-8"
           >
             Kontakt
           </a>
+        </div>
+      </div>
+
+      <div
+        class="card p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-surface-50 md:col-span-2"
+      >
+        <h3 class="text-lg font-semibold mb-4">Rechtliche Hinweise</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="font-medium mb-2">Angaben gemäß § 5 TMG</h4>
+            <address class="not-italic">
+              <div>Alexander Ertli</div>
+              <div>21073 Hamburg</div>
+              <div>Deutschland</div>
+            </address>
+          </div>
+          <div>
+            <h4 class="font-medium mb-2 mt-2">Kontakt</h4>
+            <div>
+              E-Mail:
+              <a
+                href="mailto:hello@contenox.com"
+                class="text-primary hover:underline"
+                >hello@contenox.com</a
+              >
+            </div>
+            <p class="mt-2">
+              Wirtschafts-Identifikationsnummer: DE429161583-00001
+            </p>
+            <p>Steuernummer: 2247005603265</p>
+          </div>
         </div>
       </div>
     </footer>
