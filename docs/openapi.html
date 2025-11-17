@@ -1,39 +1,76 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contenox Runtime API</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Contenox Runtime API</title>
 
-    <meta name="description" content="API reference for the Contenox runtime." />
+        <meta
+            name="description"
+            content="API reference for the Contenox runtime."
+        />
 
-    <!-- Reuse contenox.com CSS -->
-    <link rel="stylesheet" href="/css/style-vars.css" />
-    <link rel="stylesheet" href="/css/global.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-  </head>
-  <body class="document">
-    <main class="section" id="main-content">
-      <div class="container">
-        <h1>Contenox Runtime API</h1>
-        <p class="smallprint">
-          Generated from the current OpenAPI specification. This is a static reference; there is no public hosted API yet.
-        </p>
-        <div class="card" style="margin-top: 1.5rem; padding: 1.5rem;">
-<hr>
-<p>title: contenox/runtime – LLM Backend Management API v3ac621a-dirty
-language_tabs:</p>
-<ul>
-<li>python: Python
-language_clients:</li>
-<li>python: &quot;&quot;
-toc_footers: []
-includes: []
-search: true
-highlight_theme: darkula
-headingLevel: 2</li>
-</ul>
-<hr>
+        <!-- Reuse contenox.com CSS -->
+        <link rel="stylesheet" href="/css/style-vars.css" />
+        <link rel="stylesheet" href="/css/global.css" />
+        <link rel="stylesheet" href="/css/components.css" />
+
+        <style>
+            .api-docs h1,
+            .api-docs h2,
+            .api-docs h3 {
+                margin-top: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .api-docs p,
+            .api-docs ul,
+            .api-docs ol {
+                margin-bottom: 0.75rem;
+            }
+
+            .api-docs code {
+                font-family:
+                    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                    "Liberation Mono", "Courier New", monospace;
+                font-size: 0.9em;
+            }
+
+            .api-docs pre {
+                padding: 1rem;
+                border-radius: 0.75rem;
+                overflow-x: auto;
+            }
+
+            .api-docs table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1.5rem 0;
+                font-size: 0.9rem;
+            }
+
+            .api-docs th,
+            .api-docs td {
+                padding: 0.5rem 0.75rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                text-align: left;
+                vertical-align: top;
+            }
+
+            .api-docs th {
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body class="document">
+        <main class="section" id="main-content">
+            <div class="container">
+                <h1>Contenox Runtime API</h1>
+                <p class="smallprint">
+                    Generated from the current OpenAPI specification. This is a
+                    static reference; there is no public hosted API yet.
+                </p>
+                <div class="card" style="margin-top: 1.5rem; padding: 1.5rem">
 <!-- Generator: Widdershins v4.0.1 -->
 
 <h1 id="contenox-runtime-llm-backend-management-api">contenox/runtime – LLM Backend Management API v3ac621a-dirty</h1>
@@ -41,7 +78,6 @@ headingLevel: 2</li>
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
 </blockquote>
-<h1>Authentication</h1>
 <ul>
 <li>API Key (X-API-Key)<ul>
 <li>Parameter Name: <strong>X-API-Key</strong>, in: header.</li>
@@ -2072,6 +2108,13 @@ Typically used for GDPR compliance or cleaning up test data.</p>
 </tr>
 </thead>
 <tbody><tr>
+<td>event_type</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>The type of event to delete.</td>
+</tr>
+<tr>
 <td>from</td>
 <td>query</td>
 <td>string</td>
@@ -2084,13 +2127,6 @@ Typically used for GDPR compliance or cleaning up test data.</p>
 <td>string</td>
 <td>false</td>
 <td>End time in RFC3339 format.</td>
-</tr>
-<tr>
-<td>event_type</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>The type of event to delete.</td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -2993,18 +3029,18 @@ Accepts &#39;cursor&#39; (RFC3339Nano timestamp) and &#39;limit&#39; parameters 
 </tr>
 </thead>
 <tbody><tr>
-<td>cursor</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>An optional RFC3339Nano timestamp to fetch the next page of results.</td>
-</tr>
-<tr>
 <td>limit</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
 <td>The maximum number of items to return per page.</td>
+</tr>
+<tr>
+<td>cursor</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>An optional RFC3339Nano timestamp to fetch the next page of results.</td>
 </tr>
 <tr>
 <td>purpose</td>
@@ -3567,18 +3603,18 @@ Returns a list of remote hooks.</p>
 </tr>
 </thead>
 <tbody><tr>
-<td>limit</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>The maximum number of items to return per page.</td>
-</tr>
-<tr>
 <td>cursor</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
 <td>An optional RFC3339Nano timestamp to fetch the next page of results.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>The maximum number of items to return per page.</td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -6790,18 +6826,18 @@ print(r.json())
 </tr>
 </thead>
 <tbody><tr>
-<td>limit</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>The maximum number of items to return per page.</td>
-</tr>
-<tr>
 <td>cursor</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
 <td>An optional RFC3339Nano timestamp to fetch the next page of results.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>The maximum number of items to return per page.</td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -11404,8 +11440,8 @@ X-API-Key
 </tr>
 </tbody></table>
 
-        </div>
-      </div>
-    </main>
-  </body>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
