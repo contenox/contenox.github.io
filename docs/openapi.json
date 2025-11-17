@@ -2027,19 +2027,19 @@
         "description": "Lists all event triggers with pagination\nReturns event triggers in creation order, with the oldest triggers first.",
         "parameters": [
           {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
               "type": "string"
             }
           }
@@ -2484,6 +2484,14 @@
         "description": "Deletes all events of a specific type within a time range.\nUSE WITH CAUTION — this is a destructive operation.\nTypically used for GDPR compliance or cleaning up test data.",
         "parameters": [
           {
+            "description": "Start time in RFC3339 format.",
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "End time in RFC3339 format.",
             "in": "query",
             "name": "to",
@@ -2495,14 +2503,6 @@
             "description": "The type of event to delete.",
             "in": "query",
             "name": "event_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Start time in RFC3339 format.",
-            "in": "query",
-            "name": "from",
             "schema": {
               "type": "string"
             }
@@ -2911,19 +2911,19 @@
         "description": "Lists groups filtered by purpose type with pagination support.\nPurpose types categorize groups (e.g., \"Internal Embeddings\", \"Internal Tasks\").\nAccepts 'cursor' (RFC3339Nano timestamp) and 'limit' parameters for pagination.",
         "parameters": [
           {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
               "type": "string"
             }
           }
@@ -4266,17 +4266,17 @@
         "description": "Cancels an in-progress model download.\nAccepts either:\n- 'url' query parameter to cancel a download on a specific backend\n- 'model' query parameter to cancel the model download across all backends\nExample: /queue/cancel?url=http://localhost:11434\n/queue/cancel?model=mistral:latest",
         "parameters": [
           {
-            "description": "The base URL of a specific backend to cancel downloads on.",
+            "description": "The model name to cancel downloads for across all backends.",
             "in": "query",
-            "name": "url",
+            "name": "model",
             "schema": {
               "type": "string"
             }
           },
           {
-            "description": "The model name to cancel downloads for across all backends.",
+            "description": "The base URL of a specific backend to cancel downloads on.",
             "in": "query",
-            "name": "model",
+            "name": "url",
             "schema": {
               "type": "string"
             }
@@ -4649,19 +4649,19 @@
         "description": "Lists all task chain definitions with pagination.",
         "parameters": [
           {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
               "type": "string"
             }
           }
