@@ -1512,16 +1512,16 @@ paths:
                 Lists all event triggers with pagination
                 Returns event triggers in creation order, with the oldest triggers first.
             parameters:
-                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
-                  in: query
-                  name: cursor
-                  schema:
-                    type: string
                 - description: The maximum number of items to return per page.
                   in: query
                   name: limit
                   schema:
                     default: "100"
+                    type: string
+                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
+                  in: query
+                  name: cursor
+                  schema:
                     type: string
             responses:
                 "200":
@@ -1711,11 +1711,6 @@ paths:
                 Retrieves events for a specific aggregate within a time range.
                 Useful for rebuilding aggregate state or auditing changes.
             parameters:
-                - description: The type of event to filter by.
-                  in: query
-                  name: event_type
-                  schema:
-                    type: string
                 - description: The aggregate type (e.g., 'user', 'order').
                   in: query
                   name: aggregate_type
@@ -1731,6 +1726,11 @@ paths:
                   name: limit
                   schema:
                     default: "100"
+                    type: string
+                - description: The type of event to filter by.
+                  in: query
+                  name: event_type
+                  schema:
                     type: string
             responses:
                 "200":
@@ -1752,11 +1752,6 @@ paths:
                 Retrieves events from a specific source within a time range.
                 Useful for auditing or monitoring events from specific subsystems.
             parameters:
-                - description: The type of event to filter by.
-                  in: query
-                  name: event_type
-                  schema:
-                    type: string
                 - description: The source system that generated the event.
                   in: query
                   name: event_source
@@ -1767,6 +1762,11 @@ paths:
                   name: limit
                   schema:
                     default: "100"
+                    type: string
+                - description: The type of event to filter by.
+                  in: query
+                  name: event_type
+                  schema:
                     type: string
             responses:
                 "200":
@@ -1822,6 +1822,11 @@ paths:
                 USE WITH CAUTION — this is a destructive operation.
                 Typically used for GDPR compliance or cleaning up test data.
             parameters:
+                - description: The type of event to delete.
+                  in: query
+                  name: event_type
+                  schema:
+                    type: string
                 - description: Start time in RFC3339 format.
                   in: query
                   name: from
@@ -1830,11 +1835,6 @@ paths:
                 - description: End time in RFC3339 format.
                   in: query
                   name: to
-                  schema:
-                    type: string
-                - description: The type of event to delete.
-                  in: query
-                  name: event_type
                   schema:
                     type: string
             responses:
@@ -3073,14 +3073,14 @@ paths:
                 Example: /queue/cancel?url=http://localhost:11434
                 /queue/cancel?model=mistral:latest
             parameters:
-                - description: The base URL of a specific backend to cancel downloads on.
-                  in: query
-                  name: url
-                  schema:
-                    type: string
                 - description: The model name to cancel downloads for across all backends.
                   in: query
                   name: model
+                  schema:
+                    type: string
+                - description: The base URL of a specific backend to cancel downloads on.
+                  in: query
+                  name: url
                   schema:
                     type: string
             responses:
@@ -3216,6 +3216,11 @@ paths:
                 This endpoint fetches a raw event by its numeric ID (NID) and time range,
                 applies the current mapping configuration, and appends the resulting domain event.
             parameters:
+                - description: Start time (RFC3339)
+                  in: query
+                  name: from
+                  schema:
+                    type: string
                 - description: End time (RFC3339)
                   in: query
                   name: to
@@ -3224,11 +3229,6 @@ paths:
                 - description: Numeric ID of the raw event
                   in: query
                   name: nid
-                  schema:
-                    type: string
-                - description: Start time (RFC3339)
-                  in: query
-                  name: from
                   schema:
                     type: string
             responses:
