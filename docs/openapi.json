@@ -2327,6 +2327,14 @@
         "description": "Retrieves events for a specific aggregate within a time range.\nUseful for rebuilding aggregate state or auditing changes.",
         "parameters": [
           {
+            "description": "The type of event to filter by.",
+            "in": "query",
+            "name": "event_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The aggregate type (e.g., 'user', 'order').",
             "in": "query",
             "name": "aggregate_type",
@@ -2348,14 +2356,6 @@
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of event to filter by.",
-            "in": "query",
-            "name": "event_type",
-            "schema": {
               "type": "string"
             }
           }
@@ -3162,19 +3162,19 @@
         "description": "Lists remote hooks, optionally filtering by a unique name.\nReturns a list of remote hooks.",
         "parameters": [
           {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
               "type": "string"
             }
           }
@@ -4126,19 +4126,19 @@
         "description": "Lists all configured external providers with pagination support.",
         "parameters": [
           {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
               "type": "string"
             }
           }
@@ -4454,17 +4454,17 @@
         "description": "Retrieves a raw event by numeric ID (NID) within a time range.\nThis is useful for inspecting original payloads before mapping,\nor for preparing replay operations.",
         "parameters": [
           {
-            "description": "Start time in RFC3339 format",
+            "description": "End time in RFC3339 format",
             "in": "query",
-            "name": "from",
+            "name": "to",
             "schema": {
               "type": "string"
             }
           },
           {
-            "description": "End time in RFC3339 format",
+            "description": "Start time in RFC3339 format",
             "in": "query",
-            "name": "to",
+            "name": "from",
             "schema": {
               "type": "string"
             }
@@ -4511,14 +4511,6 @@
         "description": "replayEvent replays a raw event by NID to re-emit its corresponding domain event\nThis endpoint fetches a raw event by its numeric ID (NID) and time range,\napplies the current mapping configuration, and appends the resulting domain event.",
         "parameters": [
           {
-            "description": "Numeric ID of the raw event",
-            "in": "query",
-            "name": "nid",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "Start time (RFC3339)",
             "in": "query",
             "name": "from",
@@ -4530,6 +4522,14 @@
             "description": "End time (RFC3339)",
             "in": "query",
             "name": "to",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Numeric ID of the raw event",
+            "in": "query",
+            "name": "nid",
             "schema": {
               "type": "string"
             }
