@@ -73,7 +73,6 @@ a:focus {
     background-color: var(--color-background);
     border-radius: var(--radius-xl);
     border: 1px solid var(--color-border);
-    /* overflow: hidden REMOVED to allow shadows */
     box-shadow: var(--shadow-md);
 }
 
@@ -96,7 +95,7 @@ a:focus {
 
 /* Header */
 .site-header {
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(252, 249, 249, 0.96);
     border-bottom: 1px solid var(--color-border-light);
     position: sticky;
     top: 0;
@@ -106,7 +105,7 @@ a:focus {
 }
 @media (prefers-color-scheme: dark) {
     .site-header {
-        background-color: rgba(30, 30, 30, 0.92);
+        background-color: rgba(6, 6, 8, 0.96);
         border-bottom-color: var(--color-border);
     }
 }
@@ -178,12 +177,18 @@ a:focus {
 .hero-section {
     padding: clamp(var(--space-2xl), 8vh, var(--space-3xl)) var(--space-xl);
     text-align: center;
-    background: linear-gradient(
-        135deg,
-        var(--color-surface) 0%,
-        rgba(249, 247, 247, 0.5) 50%,
-        var(--color-background) 100%
-    );
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(152, 0, 0, 0.08),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            var(--color-surface) 0%,
+            rgba(252, 249, 249, 0.6) 50%,
+            var(--color-background) 100%
+        );
     position: relative;
     overflow: hidden;
     min-height: 70vh;
@@ -196,7 +201,7 @@ a:focus {
         background: linear-gradient(
             135deg,
             var(--color-surface) 0%,
-            rgba(44, 44, 44, 0.3) 50%,
+            #111118 45%,
             var(--color-background) 100%
         );
     }
@@ -210,7 +215,12 @@ a:focus {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.1;
+    opacity: 0.08;
+}
+@media (prefers-color-scheme: dark) {
+    .hero-banner {
+        opacity: 0.12;
+    }
 }
 .hero-content {
     position: relative;
@@ -291,7 +301,7 @@ a:focus {
     background: linear-gradient(
         180deg,
         var(--color-surface) 0%,
-        rgba(249, 247, 247, 0.5) 100%
+        rgba(252, 249, 249, 0.75) 100%
     );
 }
 @media (prefers-color-scheme: dark) {
@@ -299,7 +309,7 @@ a:focus {
         background: linear-gradient(
             180deg,
             var(--color-surface) 0%,
-            rgba(44, 44, 44, 0.3) 100%
+            #111118 100%
         );
     }
 }
@@ -374,6 +384,9 @@ a:focus {
 }
 .text-center {
     text-align: center;
+}
+.text-accent {
+    color: var(--color-primary);
 }
 
 /* Responsive */
