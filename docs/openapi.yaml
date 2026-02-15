@@ -1348,16 +1348,16 @@ paths:
                 NOTE: Only backends assigned to at least one group will be used for request processing.
                 Backends not assigned to any group exist in the configuration but are completely ignored by the routing system.
             parameters:
+                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
+                  in: query
+                  name: cursor
+                  schema:
+                    type: string
                 - description: The maximum number of items to return per page.
                   in: query
                   name: limit
                   schema:
                     default: "100"
-                    type: string
-                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
-                  in: query
-                  name: cursor
-                  schema:
                     type: string
             responses:
                 "200":
@@ -1715,6 +1715,12 @@ paths:
                 Retrieves events for a specific aggregate within a time range.
                 Useful for rebuilding aggregate state or auditing changes.
             parameters:
+                - description: Maximum number of events to return.
+                  in: query
+                  name: limit
+                  schema:
+                    default: "100"
+                    type: string
                 - description: The type of event to filter by.
                   in: query
                   name: event_type
@@ -1729,12 +1735,6 @@ paths:
                   in: query
                   name: aggregate_id
                   schema:
-                    type: string
-                - description: Maximum number of events to return.
-                  in: query
-                  name: limit
-                  schema:
-                    default: "100"
                     type: string
             responses:
                 "200":
@@ -1756,6 +1756,12 @@ paths:
                 Retrieves events from a specific source within a time range.
                 Useful for auditing or monitoring events from specific subsystems.
             parameters:
+                - description: Maximum number of events to return.
+                  in: query
+                  name: limit
+                  schema:
+                    default: "100"
+                    type: string
                 - description: The type of event to filter by.
                   in: query
                   name: event_type
@@ -1765,12 +1771,6 @@ paths:
                   in: query
                   name: event_source
                   schema:
-                    type: string
-                - description: Maximum number of events to return.
-                  in: query
-                  name: limit
-                  schema:
-                    default: "100"
                     type: string
             responses:
                 "200":
@@ -1826,6 +1826,11 @@ paths:
                 USE WITH CAUTION — this is a destructive operation.
                 Typically used for GDPR compliance or cleaning up test data.
             parameters:
+                - description: The type of event to delete.
+                  in: query
+                  name: event_type
+                  schema:
+                    type: string
                 - description: Start time in RFC3339 format.
                   in: query
                   name: from
@@ -1834,11 +1839,6 @@ paths:
                 - description: End time in RFC3339 format.
                   in: query
                   name: to
-                  schema:
-                    type: string
-                - description: The type of event to delete.
-                  in: query
-                  name: event_type
                   schema:
                     type: string
             responses:
@@ -1860,16 +1860,16 @@ paths:
                 Retrieves events of a specific type within a time range.
                 Useful for cross-aggregate analysis or system-wide event monitoring.
             parameters:
-                - description: The type of event to filter by.
-                  in: query
-                  name: event_type
-                  schema:
-                    type: string
                 - description: Maximum number of events to return.
                   in: query
                   name: limit
                   schema:
                     default: "100"
+                    type: string
+                - description: The type of event to filter by.
+                  in: query
+                  name: event_type
+                  schema:
                     type: string
             responses:
                 "200":
@@ -2283,16 +2283,16 @@ paths:
                 Lists remote hooks, optionally filtering by a unique name.
                 Returns a list of remote hooks.
             parameters:
-                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
-                  in: query
-                  name: cursor
-                  schema:
-                    type: string
                 - description: The maximum number of items to return per page.
                   in: query
                   name: limit
                   schema:
                     default: "100"
+                    type: string
+                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
+                  in: query
+                  name: cursor
+                  schema:
                     type: string
             responses:
                 "200":
@@ -2709,16 +2709,16 @@ paths:
                 This endpoint returns full model details including timestamps and capabilities.
                 Intended for administrative and debugging purposes.
             parameters:
-                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
-                  in: query
-                  name: cursor
-                  schema:
-                    type: string
                 - description: The maximum number of items to return per page.
                   in: query
                   name: limit
                   schema:
                     default: "100"
+                    type: string
+                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
+                  in: query
+                  name: cursor
+                  schema:
                     type: string
             responses:
                 "200":
@@ -3182,14 +3182,14 @@ paths:
                 This is useful for inspecting original payloads before mapping,
                 or for preparing replay operations.
             parameters:
-                - description: End time in RFC3339 format
-                  in: query
-                  name: to
-                  schema:
-                    type: string
                 - description: Start time in RFC3339 format
                   in: query
                   name: from
+                  schema:
+                    type: string
+                - description: End time in RFC3339 format
+                  in: query
+                  name: to
                   schema:
                     type: string
             responses:
@@ -3311,16 +3311,16 @@ paths:
         get:
             description: Lists all task chain definitions with pagination.
             parameters:
+                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
+                  in: query
+                  name: cursor
+                  schema:
+                    type: string
                 - description: The maximum number of items to return per page.
                   in: query
                   name: limit
                   schema:
                     default: "100"
-                    type: string
-                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
-                  in: query
-                  name: cursor
-                  schema:
                     type: string
             responses:
                 "200":
