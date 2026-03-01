@@ -2283,16 +2283,16 @@ paths:
                 Lists remote hooks, optionally filtering by a unique name.
                 Returns a list of remote hooks.
             parameters:
+                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
+                  in: query
+                  name: cursor
+                  schema:
+                    type: string
                 - description: The maximum number of items to return per page.
                   in: query
                   name: limit
                   schema:
                     default: "100"
-                    type: string
-                - description: An optional RFC3339Nano timestamp to fetch the next page of results.
-                  in: query
-                  name: cursor
-                  schema:
                     type: string
             responses:
                 "200":
@@ -3077,14 +3077,14 @@ paths:
                 Example: /queue/cancel?url=http://localhost:11434
                 /queue/cancel?model=mistral:latest
             parameters:
-                - description: The model name to cancel downloads for across all backends.
-                  in: query
-                  name: model
-                  schema:
-                    type: string
                 - description: The base URL of a specific backend to cancel downloads on.
                   in: query
                   name: url
+                  schema:
+                    type: string
+                - description: The model name to cancel downloads for across all backends.
+                  in: query
+                  name: model
                   schema:
                     type: string
             responses:
