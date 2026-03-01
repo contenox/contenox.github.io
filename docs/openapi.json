@@ -2032,19 +2032,19 @@
         "description": "Lists all event triggers with pagination\nReturns event triggers in creation order, with the oldest triggers first.",
         "parameters": [
           {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
               "type": "string"
             }
           }
@@ -2395,6 +2395,14 @@
         "description": "Retrieves events from a specific source within a time range.\nUseful for auditing or monitoring events from specific subsystems.",
         "parameters": [
           {
+            "description": "The type of event to filter by.",
+            "in": "query",
+            "name": "event_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The source system that generated the event.",
             "in": "query",
             "name": "event_source",
@@ -2408,14 +2416,6 @@
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of event to filter by.",
-            "in": "query",
-            "name": "event_type",
-            "schema": {
               "type": "string"
             }
           }
@@ -2489,6 +2489,14 @@
         "description": "Deletes all events of a specific type within a time range.\nUSE WITH CAUTION — this is a destructive operation.\nTypically used for GDPR compliance or cleaning up test data.",
         "parameters": [
           {
+            "description": "The type of event to delete.",
+            "in": "query",
+            "name": "event_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Start time in RFC3339 format.",
             "in": "query",
             "name": "from",
@@ -2500,14 +2508,6 @@
             "description": "End time in RFC3339 format.",
             "in": "query",
             "name": "to",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of event to delete.",
-            "in": "query",
-            "name": "event_type",
             "schema": {
               "type": "string"
             }
@@ -2693,19 +2693,19 @@
         "description": "Lists all registered functions with pagination\nReturns functions in creation order, with the oldest functions first.",
         "parameters": [
           {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
               "type": "string"
             }
           }
@@ -3167,19 +3167,19 @@
         "description": "Lists remote hooks, optionally filtering by a unique name.\nReturns a list of remote hooks.",
         "parameters": [
           {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
               "type": "string"
             }
           }
@@ -4516,6 +4516,14 @@
         "description": "replayEvent replays a raw event by NID to re-emit its corresponding domain event\nThis endpoint fetches a raw event by its numeric ID (NID) and time range,\napplies the current mapping configuration, and appends the resulting domain event.",
         "parameters": [
           {
+            "description": "End time (RFC3339)",
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Numeric ID of the raw event",
             "in": "query",
             "name": "nid",
@@ -4527,14 +4535,6 @@
             "description": "Start time (RFC3339)",
             "in": "query",
             "name": "from",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "End time (RFC3339)",
-            "in": "query",
-            "name": "to",
             "schema": {
               "type": "string"
             }
