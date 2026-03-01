@@ -3792,19 +3792,19 @@
         "description": "Lists all registered models in internal format.\nThis endpoint returns full model details including timestamps and capabilities.\nIntended for administrative and debugging purposes.",
         "parameters": [
           {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
               "type": "string"
             }
           }
@@ -4516,6 +4516,14 @@
         "description": "replayEvent replays a raw event by NID to re-emit its corresponding domain event\nThis endpoint fetches a raw event by its numeric ID (NID) and time range,\napplies the current mapping configuration, and appends the resulting domain event.",
         "parameters": [
           {
+            "description": "End time (RFC3339)",
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Numeric ID of the raw event",
             "in": "query",
             "name": "nid",
@@ -4527,14 +4535,6 @@
             "description": "Start time (RFC3339)",
             "in": "query",
             "name": "from",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "End time (RFC3339)",
-            "in": "query",
-            "name": "to",
             "schema": {
               "type": "string"
             }
