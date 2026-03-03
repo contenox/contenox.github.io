@@ -1826,6 +1826,11 @@ paths:
                 USE WITH CAUTION — this is a destructive operation.
                 Typically used for GDPR compliance or cleaning up test data.
             parameters:
+                - description: End time in RFC3339 format.
+                  in: query
+                  name: to
+                  schema:
+                    type: string
                 - description: The type of event to delete.
                   in: query
                   name: event_type
@@ -1834,11 +1839,6 @@ paths:
                 - description: Start time in RFC3339 format.
                   in: query
                   name: from
-                  schema:
-                    type: string
-                - description: End time in RFC3339 format.
-                  in: query
-                  name: to
                   schema:
                     type: string
             responses:
@@ -3077,14 +3077,14 @@ paths:
                 Example: /queue/cancel?url=http://localhost:11434
                 /queue/cancel?model=mistral:latest
             parameters:
-                - description: The model name to cancel downloads for across all backends.
-                  in: query
-                  name: model
-                  schema:
-                    type: string
                 - description: The base URL of a specific backend to cancel downloads on.
                   in: query
                   name: url
+                  schema:
+                    type: string
+                - description: The model name to cancel downloads for across all backends.
+                  in: query
+                  name: model
                   schema:
                     type: string
             responses:

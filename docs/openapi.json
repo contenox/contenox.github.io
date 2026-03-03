@@ -2489,6 +2489,14 @@
         "description": "Deletes all events of a specific type within a time range.\nUSE WITH CAUTION — this is a destructive operation.\nTypically used for GDPR compliance or cleaning up test data.",
         "parameters": [
           {
+            "description": "End time in RFC3339 format.",
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The type of event to delete.",
             "in": "query",
             "name": "event_type",
@@ -2500,14 +2508,6 @@
             "description": "Start time in RFC3339 format.",
             "in": "query",
             "name": "from",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "End time in RFC3339 format.",
-            "in": "query",
-            "name": "to",
             "schema": {
               "type": "string"
             }
@@ -4271,17 +4271,17 @@
         "description": "Cancels an in-progress model download.\nAccepts either:\n- 'url' query parameter to cancel a download on a specific backend\n- 'model' query parameter to cancel the model download across all backends\nExample: /queue/cancel?url=http://localhost:11434\n/queue/cancel?model=mistral:latest",
         "parameters": [
           {
-            "description": "The model name to cancel downloads for across all backends.",
+            "description": "The base URL of a specific backend to cancel downloads on.",
             "in": "query",
-            "name": "model",
+            "name": "url",
             "schema": {
               "type": "string"
             }
           },
           {
-            "description": "The base URL of a specific backend to cancel downloads on.",
+            "description": "The model name to cancel downloads for across all backends.",
             "in": "query",
-            "name": "url",
+            "name": "model",
             "schema": {
               "type": "string"
             }
