@@ -2362,6 +2362,14 @@
         "description": "Retrieves events for a specific aggregate within a time range.\nUseful for rebuilding aggregate state or auditing changes.",
         "parameters": [
           {
+            "description": "The unique ID of the aggregate.",
+            "in": "query",
+            "name": "aggregate_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Maximum number of events to return.",
             "in": "query",
             "name": "limit",
@@ -2382,14 +2390,6 @@
             "description": "The aggregate type (e.g., 'user', 'order').",
             "in": "query",
             "name": "aggregate_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique ID of the aggregate.",
-            "in": "query",
-            "name": "aggregate_id",
             "schema": {
               "type": "string"
             }
@@ -2425,15 +2425,6 @@
         "description": "Retrieves events from a specific source within a time range.\nUseful for auditing or monitoring events from specific subsystems.",
         "parameters": [
           {
-            "description": "Maximum number of events to return.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": "100",
-              "type": "string"
-            }
-          },
-          {
             "description": "The type of event to filter by.",
             "in": "query",
             "name": "event_type",
@@ -2446,6 +2437,15 @@
             "in": "query",
             "name": "event_source",
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Maximum number of events to return.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": "100",
               "type": "string"
             }
           }
@@ -4301,17 +4301,17 @@
         "description": "Cancels an in-progress model download.\nAccepts either:\n- 'url' query parameter to cancel a download on a specific backend\n- 'model' query parameter to cancel the model download across all backends\nExample: /queue/cancel?url=http://localhost:11434\n/queue/cancel?model=mistral:latest",
         "parameters": [
           {
-            "description": "The base URL of a specific backend to cancel downloads on.",
+            "description": "The model name to cancel downloads for across all backends.",
             "in": "query",
-            "name": "url",
+            "name": "model",
             "schema": {
               "type": "string"
             }
           },
           {
-            "description": "The model name to cancel downloads for across all backends.",
+            "description": "The base URL of a specific backend to cancel downloads on.",
             "in": "query",
-            "name": "model",
+            "name": "url",
             "schema": {
               "type": "string"
             }
@@ -4546,6 +4546,14 @@
         "description": "replayEvent replays a raw event by NID to re-emit its corresponding domain event\nThis endpoint fetches a raw event by its numeric ID (NID) and time range,\napplies the current mapping configuration, and appends the resulting domain event.",
         "parameters": [
           {
+            "description": "Numeric ID of the raw event",
+            "in": "query",
+            "name": "nid",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Start time (RFC3339)",
             "in": "query",
             "name": "from",
@@ -4557,14 +4565,6 @@
             "description": "End time (RFC3339)",
             "in": "query",
             "name": "to",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Numeric ID of the raw event",
-            "in": "query",
-            "name": "nid",
             "schema": {
               "type": "string"
             }
