@@ -1282,9 +1282,18 @@
             },
             "type": "array"
           },
+          "shift": {
+            "description": "Shift allows the context window to slide on overflow instead of erroring.",
+            "type": "boolean"
+          },
           "temperature": {
             "example": 0.7,
             "type": "number"
+          },
+          "think": {
+            "description": "Think enables reasoning mode for supported models.\nAccepts \"true\"/\"false\" or \"high\"/\"medium\"/\"low\". Empty = provider default (off).",
+            "example": "high",
+            "type": "string"
           }
         },
         "required": [
@@ -1366,11 +1375,22 @@
           "role": {
             "example": "user",
             "type": "string"
+          },
+          "thinking": {
+            "description": "Thinking allows clients to supply their own reasoning traces for assistant messages.",
+            "example": "The user is asking a greeting.",
+            "type": "string"
+          },
+          "tool_call_id": {
+            "description": "ToolCallID links a tool-result message back to its originating call.",
+            "type": "string"
+          },
+          "tool_calls": {
+            "$ref": "#/components/schemas/taskengine_ToolCall"
           }
         },
         "required": [
-          "role",
-          "content"
+          "role"
         ],
         "type": "object"
       },
@@ -1404,6 +1424,10 @@
           },
           "role": {
             "example": "assistant",
+            "type": "string"
+          },
+          "thinking": {
+            "example": "The user asked for help. I should respond positively.",
             "type": "string"
           },
           "tool_calls": {
@@ -1571,6 +1595,12 @@
             "example": "call_abc123",
             "type": "string"
           },
+          "provider_meta": {
+            "additionalProperties": true,
+            "description": "ProviderMeta carries opaque provider-specific data (e.g. Gemini thought_signature)\nthat must be round-tripped back on the next turn.",
+            "example": "{\\\"thought_signature\\\":\\\"123456\\\"}",
+            "type": "object"
+          },
           "type": {
             "example": "function",
             "type": "string"
@@ -1621,7 +1651,7 @@
   },
   "info": {
     "title": "contenox – LLM Backend Management API",
-    "version": "v0.1.7"
+    "version": "v0.2.0"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -3167,19 +3197,19 @@
         "description": "Lists remote hooks, optionally filtering by a unique name.\nReturns a list of remote hooks.",
         "parameters": [
           {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
               "type": "string"
             }
           }
@@ -4516,14 +4546,6 @@
         "description": "replayEvent replays a raw event by NID to re-emit its corresponding domain event\nThis endpoint fetches a raw event by its numeric ID (NID) and time range,\napplies the current mapping configuration, and appends the resulting domain event.",
         "parameters": [
           {
-            "description": "Numeric ID of the raw event",
-            "in": "query",
-            "name": "nid",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "Start time (RFC3339)",
             "in": "query",
             "name": "from",
@@ -4535,6 +4557,14 @@
             "description": "End time (RFC3339)",
             "in": "query",
             "name": "to",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Numeric ID of the raw event",
+            "in": "query",
+            "name": "nid",
             "schema": {
               "type": "string"
             }
