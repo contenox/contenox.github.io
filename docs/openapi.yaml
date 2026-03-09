@@ -1809,12 +1809,6 @@ paths:
                 Retrieves events for a specific aggregate within a time range.
                 Useful for rebuilding aggregate state or auditing changes.
             parameters:
-                - description: Maximum number of events to return.
-                  in: query
-                  name: limit
-                  schema:
-                    default: "100"
-                    type: string
                 - description: The type of event to filter by.
                   in: query
                   name: event_type
@@ -1829,6 +1823,12 @@ paths:
                   in: query
                   name: aggregate_id
                   schema:
+                    type: string
+                - description: Maximum number of events to return.
+                  in: query
+                  name: limit
+                  schema:
+                    default: "100"
                     type: string
             responses:
                 "200":
@@ -1850,6 +1850,11 @@ paths:
                 Retrieves events from a specific source within a time range.
                 Useful for auditing or monitoring events from specific subsystems.
             parameters:
+                - description: The type of event to filter by.
+                  in: query
+                  name: event_type
+                  schema:
+                    type: string
                 - description: The source system that generated the event.
                   in: query
                   name: event_source
@@ -1860,11 +1865,6 @@ paths:
                   name: limit
                   schema:
                     default: "100"
-                    type: string
-                - description: The type of event to filter by.
-                  in: query
-                  name: event_type
-                  schema:
                     type: string
             responses:
                 "200":
@@ -1954,16 +1954,16 @@ paths:
                 Retrieves events of a specific type within a time range.
                 Useful for cross-aggregate analysis or system-wide event monitoring.
             parameters:
-                - description: The type of event to filter by.
-                  in: query
-                  name: event_type
-                  schema:
-                    type: string
                 - description: Maximum number of events to return.
                   in: query
                   name: limit
                   schema:
                     default: "100"
+                    type: string
+                - description: The type of event to filter by.
+                  in: query
+                  name: event_type
+                  schema:
                     type: string
             responses:
                 "200":
