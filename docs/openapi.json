@@ -84,6 +84,12 @@
         },
         "type": "array"
       },
+      "array_planstore_Plan": {
+        "items": {
+          "$ref": "#/components/schemas/planstore_Plan"
+        },
+        "type": "array"
+      },
       "array_runtimestate_ProviderConfig": {
         "items": {
           "$ref": "#/components/schemas/runtimestate_ProviderConfig"
@@ -135,6 +141,12 @@
       "array_taskengine_TaskChainDefinition": {
         "items": {
           "$ref": "#/components/schemas/taskengine_TaskChainDefinition"
+        },
+        "type": "array"
+      },
+      "array_vfsapi_FileResponse": {
+        "items": {
+          "$ref": "#/components/schemas/vfsapi_FileResponse"
         },
         "type": "array"
       },
@@ -751,6 +763,43 @@
         ],
         "type": "object"
       },
+      "planstore_Plan": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "session_id": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/planstore_PlanStatus"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "goal",
+          "status",
+          "session_id",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object"
+      },
       "runtimestate_ProviderConfig": {
         "properties": {
           "APIKey": {
@@ -1338,7 +1387,8 @@
             "type": "array"
           },
           "hooks": {
-            "example": "[\\\"slack_notification\\\", \\\"email_notification\\\"]",
+            "description": "Hooks is the allowlist of hook names this task may invoke.\nPatterns supported:\n- absent/null   — all registered hooks (backward-compatible default)\n- []            — no hooks exposed to the model\n- [\"*\"]         — all registered hooks (explicit)\n- [\"a\",\"b\"]     — only the named hooks (unknown names silently ignored)\n- [\"*\",\"!name\"] — all hooks except the excluded name(s)\nExclusions (\"!name\") are only meaningful when combined with \"*\".",
+            "example": "[\\\"local_shell\\\", \\\"nws\\\"]",
             "items": {
               "type": "string"
             },
@@ -1726,6 +1776,127 @@
           "goto"
         ],
         "type": "object"
+      },
+      "vfsapi_FileResponse": {
+        "properties": {
+          "contentType": {
+            "example": "application/pdf",
+            "type": "string"
+          },
+          "createdAt": {
+            "example": "2024-06-01T12:00:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "example": "file_abc123",
+            "type": "string"
+          },
+          "name": {
+            "example": "report.pdf",
+            "type": "string"
+          },
+          "path": {
+            "example": "/documents/report.pdf",
+            "type": "string"
+          },
+          "size": {
+            "example": 102400,
+            "type": "integer"
+          },
+          "updatedAt": {
+            "example": "2024-06-01T12:00:00Z",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "name",
+          "size",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "vfsapi_FolderResponse": {
+        "properties": {
+          "createdAt": {
+            "example": "2024-06-01T12:00:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "example": "folder_xyz789",
+            "type": "string"
+          },
+          "name": {
+            "example": "projects",
+            "type": "string"
+          },
+          "parentId": {
+            "example": "folder_root",
+            "type": "string"
+          },
+          "path": {
+            "example": "/documents/projects",
+            "type": "string"
+          },
+          "updatedAt": {
+            "example": "2024-06-01T12:00:00Z",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "name",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "vfsapi_folderCreateRequest": {
+        "properties": {
+          "name": {
+            "example": "New Folder",
+            "type": "string"
+          },
+          "parentId": {
+            "example": "folder_root",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "vfsapi_moveRequest": {
+        "properties": {
+          "newParentId": {
+            "example": "folder_abc123",
+            "type": "string"
+          }
+        },
+        "required": [
+          "newParentId"
+        ],
+        "type": "object"
+      },
+      "vfsapi_nameUpdateRequest": {
+        "properties": {
+          "name": {
+            "example": "new-name.txt",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -1899,19 +2070,19 @@
         "description": "Lists all configured backend connections with runtime status.\nNOTE: Only backends assigned to at least one group will be used for request processing.\nBackends not assigned to any group exist in the configuration but are completely ignored by the routing system.",
         "parameters": [
           {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
               "type": "string"
             }
           }
@@ -2149,19 +2320,19 @@
         "description": "Lists all event triggers with pagination\nReturns event triggers in creation order, with the oldest triggers first.",
         "parameters": [
           {
+            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The maximum number of items to return per page.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional RFC3339Nano timestamp to fetch the next page of results.",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
               "type": "string"
             }
           }
@@ -2658,19 +2829,19 @@
         "description": "Retrieves events of a specific type within a time range.\nUseful for cross-aggregate analysis or system-wide event monitoring.",
         "parameters": [
           {
+            "description": "The type of event to filter by.",
+            "in": "query",
+            "name": "event_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Maximum number of events to return.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": "100",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of event to filter by.",
-            "in": "query",
-            "name": "event_type",
-            "schema": {
               "type": "string"
             }
           }
@@ -2803,6 +2974,477 @@
           }
         },
         "summary": "Implement the handler method"
+      }
+    },
+    "/files": {
+      "get": {
+        "description": "Lists files and folders, optionally filtered by path.\nUse the 'path' query parameter to list contents of a specific directory.",
+        "parameters": [
+          {
+            "description": "Filter results by file path prefix.",
+            "in": "query",
+            "name": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/array_vfsapi_FileResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Lists files and folders, optionally filtered by path."
+      },
+      "post": {
+        "description": "Creates a new file by uploading binary content via multipart/form-data.\nThe 'file' field is required. Optional 'name' and 'parentid' fields control naming and placement.\nFiles are limited to 100 MiB (configurable via vfsservice.MaxUploadSize).",
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FileResponse"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Creates a new file by uploading binary content via multipart/form-data."
+      }
+    },
+    "/files/{id}": {
+      "delete": {
+        "description": "Deletes a file from the system.\nReturns a confirmation message on success.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/map[string]string"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Deletes a file from the system."
+      },
+      "get": {
+        "description": "Retrieves metadata for a specific file.\nReturns 404 if the file does not exist.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FileResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Retrieves metadata for a specific file."
+      },
+      "parameters": [
+        {
+          "description": "The unique identifier of the file.",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "description": "Updates an existing file's content via multipart/form-data.\nReplaces the entire file content. The file ID is taken from the URL path.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FileResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Updates an existing file's content via multipart/form-data."
+      }
+    },
+    "/files/{id}/download": {
+      "get": {
+        "description": "Downloads the raw content of a file.\nThe 'skip' query parameter (if \"true\") omits the Content-Disposition header.",
+        "parameters": [
+          {
+            "description": "If 'true', skips Content-Disposition header.",
+            "in": "query",
+            "name": "skip",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Downloads the raw content of a file."
+      },
+      "parameters": [
+        {
+          "description": "The unique identifier of the file.",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/files/{id}/move": {
+      "parameters": [
+        {
+          "description": "The unique identifier of the file.",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "description": "Moves a file to a new parent folder.\nAccepts a JSON body with 'newParentId'.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/vfsapi_moveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FileResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Moves a file to a new parent folder."
+      }
+    },
+    "/files/{id}/name": {
+      "parameters": [
+        {
+          "description": "The unique identifier of the file.",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "description": "Renames a file.\nAccepts a JSON body with the new 'name'.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/vfsapi_nameUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FileResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Renames a file."
+      }
+    },
+    "/folders": {
+      "post": {
+        "description": "Creates a new folder.\nRequires a 'name'. Optionally accepts 'parentId' to place it inside another folder.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/vfsapi_folderCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FolderResponse"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Creates a new folder."
+      }
+    },
+    "/folders/{id}": {
+      "delete": {
+        "description": "Deletes a folder and all its contents.\nReturns a confirmation message on success.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/map[string]string"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Deletes a folder and all its contents."
+      },
+      "parameters": [
+        {
+          "description": "The unique identifier of the folder.",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/folders/{id}/move": {
+      "parameters": [
+        {
+          "description": "The unique identifier of the folder.",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "description": "Moves a folder to a new parent folder.\nAccepts a JSON body with 'newParentId'.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/vfsapi_moveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FolderResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Moves a folder to a new parent folder."
+      }
+    },
+    "/folders/{id}/name": {
+      "parameters": [
+        {
+          "description": "The unique identifier of the folder.",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "description": "Renames a folder.\nAccepts a JSON body with the new 'name'.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/vfsapi_nameUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vfsapi_FolderResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Renames a folder."
       }
     },
     "/functions": {
@@ -4465,6 +5107,356 @@
           }
         }
       ]
+    },
+    "/plans": {
+      "get": {
+        "description": "Lists all plans.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/array_planstore_Plan"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Lists all plans."
+      },
+      "post": {
+        "description": "Creates a new plan from a free-text goal.\nThe planner_chain_id must reference an existing TaskChainDefinition.\nThe chain is called with the goal text; it must return a JSON array of step strings.\nThe new plan becomes the active plan.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/newPlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/newPlanResponse"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Creates a new plan from a free-text goal."
+      }
+    },
+    "/plans/active": {
+      "get": {
+        "description": "Returns the active plan and all its steps.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/activeResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Returns the active plan and all its steps."
+      }
+    },
+    "/plans/active/next": {
+      "post": {
+        "description": "Executes the next pending step of the active plan.\nexecutor_chain_id must reference a TaskChainDefinition that accepts a step\ndescription string and returns the execution result.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/nextStepRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/nextStepResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Executes the next pending step of the active plan."
+      }
+    },
+    "/plans/active/replan": {
+      "post": {
+        "description": "Replaces remaining pending steps with a freshly generated plan.\nCompleted steps are preserved; the planner is called with a recap of the\noriginal goal plus the completed steps to produce the new remaining steps.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/replanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/replanResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Replaces remaining pending steps with a freshly generated plan."
+      }
+    },
+    "/plans/active/steps/{ordinal}/retry": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "ordinal",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "description": "Resets a step to pending so it will be retried on the next Next call.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/markdownResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Resets a step to pending so it will be retried on the next Next call."
+      }
+    },
+    "/plans/active/steps/{ordinal}/skip": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "ordinal",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "description": "Marks a step as intentionally skipped.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/markdownResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Marks a step as intentionally skipped."
+      }
+    },
+    "/plans/clean": {
+      "post": {
+        "description": "Removes all completed or archived plans.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cleanResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Removes all completed or archived plans."
+      }
+    },
+    "/plans/{name}": {
+      "delete": {
+        "description": "Permanently deletes a plan by name.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Permanently deletes a plan by name."
+      },
+      "parameters": [
+        {
+          "description": "The plan name to delete.",
+          "in": "path",
+          "name": "name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/plans/{name}/activate": {
+      "parameters": [
+        {
+          "description": "The plan name to activate.",
+          "in": "path",
+          "name": "name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "description": "Switches the active plan to the named plan (archives the previous active).",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Default error response"
+          }
+        },
+        "summary": "Switches the active plan to the named plan (archives the previous active)."
+      }
     },
     "/providers/configs": {
       "get": {
