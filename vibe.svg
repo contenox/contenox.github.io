@@ -1,50 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="610" height="610" viewBox="0 0 610 610" shape-rendering="geometricPrecision"
-     xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+<!--
+  Contenox icon — modernized node routing mark.
+  Concept: the original logo.png, re-executed with the current palette.
+  Emerald nodes = active tasks. White nodes = intermediate steps.
+  Routing lines = the chain/plan connecting them.
+-->
+<svg width="512" height="512" viewBox="0 0 512 512"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-labelledby="title">
   <title id="title">contenox</title>
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0d1a12"/>
-      <stop offset="100%" stop-color="#050e08"/>
-    </linearGradient>
-    <radialGradient id="greenGrad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#16a34a"/>
-      <stop offset="100%" stop-color="#15803d"/>
-    </radialGradient>
-  </defs>
 
-  <!-- Background circle -->
-  <rect x="5" y="5" width="600" height="600" rx="260" ry="260" fill="url(#grad)"
-        stroke="#e2e5e9" stroke-width="5"/>
+  <!-- Background — warm near-black, slight green tint -->
+  <rect width="512" height="512" rx="96" ry="96" fill="#0c1410"/>
 
-  <!-- Emerald accent dot -->
-  <circle cx="438" cy="400" r="55" fill="url(#greenGrad)" stroke="rgba(255,255,255,0.15)" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+  <!--
+    Node layout — inspired by original logo.png routing structure.
+    Three horizontal "lanes" loosely staggered, connected by right-angle traces.
+    Nodes vary in size to show hierarchy (larger = more connections / more active).
+  -->
 
-  <!-- Outer arrow shape -->
-  <path
-    d="M158,168 L358,300 L158,432"
-    fill="none"
-    stroke="#e2e5e9"
-    stroke-width="70"
-    stroke-linecap="round"
-    stroke-linejoin="round"/>
+  <!-- ── Routing lines (behind nodes) ──────────────────────────────────────── -->
+  <g stroke="#1f3828" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top lane connections -->
+    <polyline points="138,168 200,168 200,220 275,220"/>
+    <polyline points="275,168 275,220"/>
+    <polyline points="275,168 338,168 338,220 390,220"/>
 
-  <!-- Soft halo behind arrow -->
-  <path
-    d="M158,168 L358,300 L158,432"
-    fill="none"
-    stroke="rgba(255,255,255,0.15)"
-    stroke-width="80"
-    stroke-linecap="round"
-    stroke-linejoin="round"/>
+    <!-- Mid lane connections -->
+    <polyline points="108,256 175,256"/>
+    <polyline points="175,256 175,220 200,220"/>
+    <polyline points="175,256 175,290 240,290 240,256 310,256"/>
+    <polyline points="310,256 310,220 338,220"/>
+    <polyline points="310,256 370,256"/>
 
-  <!-- Dashed overlay -->
-  <path
-    d="M158,168 L358,300 L158,432"
-    fill="none"
-    stroke="#0d1a12"
-    stroke-width="60"
-    stroke-linejoin="round"
-    stroke-linecap="round"
-    opacity="0.6"/>
-</svg>
+    <!-- Bottom lane connections -->
+    <polyline points="155,330 240,330 240,290"/>
+    <polyline points="240,330 310,330 310,290 370,290 370,256"/>
+    <polyline points="155,330 155,290 175,290"/>
+
+    <!-- Cross connections for the "complex close up" feel -->
+    <polyline points="200,220 240,220 240,256"/>
+    <polyline points="338,220 370,220 370,256"/>
+    <line x1="275" y1="220" x2="310" y2="220"/>
+    <line x1="240" y1="290" x2="240" y2="330"/>
+  </g>
+
+  <!-- ── Nodes ──────────────────────────────────────────────────────────────── -->
+
+  <!-- Top lane — smaller accent nodes -->
+  <rect x="116" y="146" width="44" height="44" rx="10" fill="#1a2e22"/>
+  <rect x="118" y="148" width="40" height="40" rx="9" fill="#e8f0ec"/>
+
+  <rect x="253" y="146" width="44" height="44" rx="10" fill="#10b981"/>
+
+  <rect x="316" y="146" width="44" height="44" rx="10" fill="#1a2e22"/>
+  <rect x="318" y="148" width="40" height="40" rx="9" fill="#e8f0ec"/>
