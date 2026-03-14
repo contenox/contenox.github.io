@@ -56,9 +56,9 @@ TMP="$(mktemp)"
 
 echo "Downloading ${ASSET}..."
 if command -v curl >/dev/null 2>&1; then
-  curl -fsSL "${URL}" -o "${TMP}"
+  curl -fL --progress-bar --max-time 120 "${URL}" -o "${TMP}"
 elif command -v wget >/dev/null 2>&1; then
-  wget -qO "${TMP}" "${URL}"
+  wget --show-progress -qO "${TMP}" "${URL}"
 fi
 
 chmod +x "${TMP}"
