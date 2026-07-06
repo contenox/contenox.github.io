@@ -1,5 +1,0 @@
-User-Agent: *
-Allow: /
-
-Host: https://contenox.com
-Sitemap: https://contenox.com/sitemap.xml
